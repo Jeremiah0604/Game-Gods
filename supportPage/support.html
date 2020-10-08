@@ -25,8 +25,15 @@
             <Nav class="NavigationBar">
                 <a class="NavigationLinks" href="/index.html">Home</a>
                 <a class="NavigationLinksSelected" href="supportPage/support.html">Support Us</a>
-                        <a class="NavigationLinks" href="#">Servers</a>
-                        <a class="NavigationLinks" href="#">Discord</a>
+                        <div class="dropdown">
+                          <a class="NavigationLinks" class="dropbtn" href="/serverPage/server.html">Servers</a>
+                          <div class="dropdown-content">
+                            <a href="#">Minecraft</a>
+                            <a href="#">Scum</a>
+                            <a id="lastitem" href="#">FiveM</a>
+                          </div>
+                        </div>
+                        <a class="NavigationLinks" href="https://discord.gg/egCX4Zm">Discord</a>
                     </Nav>
                   </div>
             </Nav>
@@ -73,60 +80,7 @@
   }
 }
 </script>
-<script>
-  
-(function(){
-  'use strict';
 
-  class Menu {
-    constructor(settings) {
-      this.menuNode = settings.menuNode;
-      this.state = false;
-      this.menuStateTextNode = settings.menuStateTextNode || this.menuNode.querySelector('.menu__screen-reader');
-      this.menuOpenedText = settings.menuOpenedText || 'Open menu';
-      this.menuClosedText = settings.menuClosedText || 'Close menu';
-    }
-    
-    changeState(state) {
-      return this.state = !state;
-    }
-    
-    changeStateText(state, node) {
-      let text = (state !== true) ? this.menuOpenedText : this.menuClosedText;
-      
-      node.textContent = text;
-      return text; 
-    }
-           
-    toggleMenuState(className) {   
-      
-      let state;
-      
-      if (typeof className !== 'string' || className.length === 0) {
-        return console.log('you did not give the class for the toggleState function');
-      } 
-            
-      state = this.changeState(this.state);
-      
-      this.changeStateText(state, this.menuStateTextNode);
-      this.menuNode.classList.toggle(className);
-      
-      return state;  
-    }
-  }
-
-  const jsMenuNode = document.querySelector('.menu');
-  const demoMenu = new Menu ({
-    menuNode: jsMenuNode
-  });
-  
-  function callMenuToggle(event) {
-    demoMenu.toggleMenuState('menu_activated');
-  }
-  
-  jsMenuNode.querySelector('.menu__toggle').addEventListener('click', callMenuToggle);
-})();
-</script>
 
 <script type="text/javascript">
     
